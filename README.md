@@ -13,10 +13,12 @@ Personal collection of agent skills. Each skill lives under `.agents/skills/<nam
 - `design-doc` - write design docs and tokens in the `DESIGN.md` format.
 - `frontend-taste` - recommend 2-3 named visual directions before building any UI.
 - `git-commit` - split diffs into atomic Conventional Commits with sign-off, never push.
+- `how-to-basic` - ground operators in a new system with assumptions, base rules, patterns, and provenance.
 - `research` - run disciplined open-source research with corroboration and inline citations.
 - `sdd-plan` - turn a PRD into a wired task graph under `specs/tasks/`.
 - `sdd-prd` - write an atomic product requirements document with unknowns marked.
 - `sdd-tasks` - maintain task files and keep the dependency graph valid.
+- `sdd-team` - orchestrate multiple agents or people as a team from shared specs with re-anchoring and gated review.
 - `skills-creator` - author or audit an Agent Skill against the house rules.
 - `spec-conventions` - document what belongs in `specs/` and which numbers and statuses to use.
 - `teach-me` - teach a concept in small honest steps with an optional quiz.

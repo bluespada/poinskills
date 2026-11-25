@@ -5,7 +5,7 @@ description: >-
   editing or status changes, or when the dependency graph must be validated. It
   owns the YAML task files after bootstrap: adding and removing tasks, fixing
   dependsOn so the graph resolves without cycles or dangling references, moving
-  status between draft pending complete and canceled, and keeping the PRD tasks
+  status between draft pending in-review complete and canceled, and keeping the PRD tasks
   list in sync. It does not write the PRD or implementation code.
 ---
 
@@ -31,8 +31,8 @@ description: >-
 - Ask which tasks the user intends to run in parallel, and name the files or interfaces each one owns before calling anything parallel-safe.
 
 ## Status
-- `draft` means written but unapproved, `pending` means approved and not started, `complete` means its goals hold, `canceled` means it will not be done.
-- Never mark a task `complete` without checking each goal; report the goal that failed instead.
+- `draft` means written but unapproved, `pending` means approved and not started, `in-review` means a PR is open with a reviewer assigned, `complete` means every goal holds with reviewer LGTM, and `canceled` means it will not be done.
+- Never mark a task `complete` without checking each goal and holding reviewer LGTM; report the goal that failed instead.
 - Ask before canceling a task, and say what the cancellation leaves unreachable downstream.
 
 ## Finish

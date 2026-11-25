@@ -15,7 +15,7 @@
     Satisfies: {{FR-001}}
 
     {{The work specification.}}
-  status: {{draft | pending | complete | canceled}}
+  status: {{draft | pending | in-review | complete | canceled}}
   dependsOn: []
   goals:
     - {{Condition whose truth means this task is finished.}}

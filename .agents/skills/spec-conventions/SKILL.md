@@ -21,7 +21,7 @@ description: >-
 - Directory layout: what lives where under `specs/`, shown as a tree.
 - Numbering and naming: spec numbers, task group prefixes, decision numbers, and context-named design files.
 - Frontmatter rules: a table of the fields each artifact carries, and which artifact omits which field.
-- Status vocabulary: `draft`, `pending`, `complete`, `canceled`, and what each means per artifact type.
+- Status vocabulary: `draft`, `pending`, `in-review`, `complete`, `canceled`, and what each means per artifact type.
 - Glossary: one line per term, limited to terms that actually appear in the specs.
 
 ## Keep it true

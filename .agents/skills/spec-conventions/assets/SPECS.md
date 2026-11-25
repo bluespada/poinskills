@@ -27,7 +27,7 @@ specs/
 | Artifact | Fields |
 |---|---|
 | PRD | name, description, status, tasks, authored, createdAt, updatedAt |
-| Task file | name, description, content, status, dependsOn, goals, authored, createdAt, updatedAt |
+| Task file | name, description, content, status, dependsOn, goals, authored, reviewer, createdAt, updatedAt |
 | Decision record | name, description, status, authored, createdAt, updatedAt |
 | Design doc | none |
 | SPECS.md | none |
@@ -39,7 +39,8 @@ specs/
 
 - `draft` — written, not settled.
 - `pending` — settled, awaiting or undergoing work.
-- `complete` — done and verified against its own criteria.
+- `in-review` — PR open with a reviewer assigned; owned by the reviewer gate.
+- `complete` — done and verified against its own criteria plus reviewer LGTM.
 - `canceled` — will not be done; the reason is recorded.
 
 ## Open conventions

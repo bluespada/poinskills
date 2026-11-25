@@ -30,23 +30,24 @@ A file is a YAML sequence of task mappings, with exactly these keys in this orde
 - `dependsOn` is a list, empty rather than absent when there are no dependencies.
 - `goals` is a plain string list of checkable conditions. No nested objects, no per-goal status. The list
   is the finish flag in full: the task is `complete` only when every goal holds, and a partially met list
-  means the task is still `pending`. An empty `goals` list means the task cannot be finished at all.
+  means the task is still `pending` or `in-review`. An empty `goals` list means the task cannot be finished at all.
 - `authored` is a list of contributors. Append; never replace, or the history is lost.
+- There is no `reviewer` key on the task file: the reviewer lives on the tracker issue, and `in-review` plus LGTM are the process gate, not schema fields.
 - `createdAt` is written once, `updatedAt` moves on every write. Both are ISO-8601 UTC with a trailing `Z`.
 
 ## Status lifecycle
 
 ```
-draft -> pending -> complete
-   \        \          /
-    \        \        /
-     +--------+-----> canceled
+draft -> pending -> in-review -> complete
+   \        \          \            /
+    \        \          \          /
+     +-------------------------------+-----> canceled
 ```
 
 - `draft` — written but unapproved. Bootstrapped tasks start here. The graph may still change.
 - `pending` — approved and not started. Dependencies are being respected.
-- `complete` — every goal holds, verified by the check the goal names. All of them, not most. Not "the code
-  is written".
+- `in-review` — PR open with a reviewer assigned. Set by the owner when the PR opens.
+- `complete` — every goal holds plus reviewer LGTM plus a clean verifier run. All of them, not most. Not "the code is written".
 - `canceled` — will not be done. Requires a reason, and a note on what it leaves unreachable.
 
 Transitions that are never valid: `complete` back to `pending` (reopen as `draft` instead, so the review
