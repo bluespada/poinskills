@@ -70,11 +70,13 @@ One line: what was decided.
 
 ## Rules
 
-- **Append, never rewrite, except on user drift.** A reversal is a new record referencing the old one,
-  not an edit to history. When a live user request changes direction, update the affected record as
-  part of the same work instead of blocking the request.
-- **Sync the artifacts a record refers to on user drift.** A live user request that contradicts the PRD,
-  design, or task wins; update those artifacts in the same work rather than stopping at the record.
+- **Append, never rewrite, except on confirmed user drift.** A reversal is a new record referencing the old one,
+  not an edit to history. When a live user request changes direction, pause and name the affected record,
+  then wait for explicit user confirmation before updating it; without confirmation, write the new direction
+  as a separate draft and stop.
+- **Sync the artifacts a record refers to only on confirmed user drift.** A live user request that contradicts the PRD,
+  design, or task wins only after the user explicitly confirms the sync; the agent never rewrites PRD, design,
+  or task files on its own. Describe the proposed sync and stop until the user approves.
 - **One decision per file.** A file holding several decisions cannot be referenced, superseded, or dated
   coherently.
 - **Do not copy an ADR in.** Link to it. Two copies of a synthesised record will disagree eventually.

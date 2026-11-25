@@ -31,8 +31,8 @@
 - Codex — global `~/.codex/AGENTS.override.md` then `AGENTS.md`; per directory `AGENTS.override.md`, `AGENTS.md`, then configured fallbacks. One file per directory, concatenated root to current directory, nearest last.
 - Copilot — the nearest `AGENTS.md` in the tree wins; precedence is personal over repository over organization.
 - Cursor — reads `AGENTS.md` at the root and nested, always applies `CLAUDE.md`, and keeps glob-scoped rules in `.cursor/rules/*.mdc`.
-- Claude Code — reads `AGENTS.md` natively from v2.1.277, but only when no `CLAUDE.md`, `.claude/CLAUDE.md` or `CLAUDE.local.md` sits at or above the working directory. Set Project instructions to `claude-md-and-agents-md` in `/config` to read both.
-- Aider needs `read: AGENTS.md` in `.aider.conf.yml`. Gemini CLI needs `{"context": {"fileName": "AGENTS.md"}}`.
+- Claude Code — reads `AGENTS.md` natively from v2.1.277, but only when no `CLAUDE.md`, `.claude/CLAUDE.md` or `CLAUDE.local.md` sits at or above the working directory. A human may set Project instructions to `claude-md-and-agents-md` in `/config` to read both; the agent never changes this setting itself.
+- Aider reads `read: AGENTS.md` in `.aider.conf.yml` when a human adds it. Gemini CLI reads `{"context": {"fileName": "AGENTS.md"}}` when a human configures it. The agent describes the setting and stops; only the user edits agent config files.
 - A `CLAUDE.md` whose first line is `@AGENTS.md` is the portable bridge. A sentence such as "see AGENTS.md" is not an import and loads nothing.
 
 ## Nested files
@@ -51,7 +51,7 @@
 
 ## Verify
 - Claude Code — `/memory` or `/context`, and look for the path under Memory files.
-- Codex — `codex --ask-for-approval never "Summarize the current instructions."` and read back the merged result.
+- Codex — run a read-only `codex "Summarize the current instructions."` under the session's normal approval policy and read back the merged result. Never add flags that disable approvals.
 - Both — confirm the merged text is the sum you expect and nothing was cut at a cap.
 - By hand — heading order, no table, every command still exists, every referenced path still resolves.
 

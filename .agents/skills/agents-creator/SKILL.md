@@ -39,6 +39,6 @@ description: >-
 - Cut anything in `.cursor/rules/`, `.claude/rules/` or `.github/instructions/` that a bullet already states.
 
 ## Verify
-- Confirm it loaded: `/memory` under Claude Code, and `codex --ask-for-approval never "Summarize the current instructions."` under Codex.
+- Confirm it loaded: `/memory` or `/context` under Claude Code, and a read-only `codex "Summarize the current instructions."` run under the session's normal approval policy. Never add flags that disable approvals, and never run write commands to verify loading.
 - Re-read the file after writing and check the heading order, the line count, and that no table slipped in.
 - Report the sections left empty and the commands you could not run, instead of filling them with generic advice.
