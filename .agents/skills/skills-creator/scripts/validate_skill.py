@@ -198,3 +198,64 @@ def main():
     desc_tokens = token_count(encoder, description)
     low, high = desc_band
     report.add("description tokens", "pass" if low <= desc_tokens <= high else "error",
+               f"{desc_tokens}, need {low}-{high}")
+
+    desc_chars = len(description)
+    angle = "<" in description or ">" in description
+    report.add("description chars", "error" if angle or desc_chars > 1024 else "pass",
+               f"{desc_chars} / 1024" + (", angle brackets break markup-based renderers" if angle else ""))
+
+    segments = [s for s in QUOTED_RE.sub("", description).split(",") if s.strip()]
+    report.add("description wording", "warn" if len(segments) >= 8 else "pass",
+               f"{len(segments)} comma segments, flag at 8")
+
+    headings, bullets, ordered, prose, fences = scan_body(body)
+    body_tokens = token_count(encoder, body)
+    low, high = body_band
+    report.add("body tokens", "pass" if low <= body_tokens <= high else "error",
+               f"{body_tokens}, need {low}-{high}")
+
+    h1s = [h for h in headings if h[0] == 1]
+    deeper = [h for h in headings if h[0] > 3]
+    heading_problems = []
+    if len(h1s) != 1:
+        heading_problems.append(f"{len(h1s)} H1, want exactly 1")
+    if h1s and any(h[2] < h1s[0][2] for h in headings):
+        heading_problems.append("section heading before the H1 title")
+    if deeper:
+        heading_problems.append(f"H4+ at line {deeper[0][2]}")
+    report.add("headings", "error" if heading_problems else "pass",
+               "; ".join(heading_problems) if heading_problems else f"{len(h1s)} H1, {len(headings) - len(h1s)} H2/H3")
+
+    sections = [h for h in headings if h[0] == 2]
+    report.add("sections", "pass" if sections else "error",
+               f"{len(sections)} H2 section(s)" if sections else "no H2 sections under the H1 title")
+
+    if ordered:
+        report.add("lists", "error", f"ordered list at line {ordered[0]}; bullets only")
+    else:
+        report.add("lists", "pass", f"0 ordered, {bullets} bullets")
+
+    if prose:
+        report.add("prose lines", "error", f"non-bullet line {prose[0]} ({len(prose)} total)")
+    else:
+        report.add("prose lines", "pass", "0")
+
+    if fences % 2:
+        report.add("fenced code", "error", f"{fences} fence markers, unbalanced")
+    else:
+        report.add("fenced code", "pass", f"{fences // 2} closed")
+
+    compatibility = meta.get("compatibility")
+    if isinstance(compatibility, str) and len(compatibility) > 500:
+        report.add("frontmatter", "warn", f"compatibility {len(compatibility)} chars, max 500")
+
+    errors, warnings = report.errors, report.warnings
+    if args.strict:
+        errors += warnings
+    print(f"{errors} error(s), {warnings} warning(s)")
+    return 1 if errors else (2 if warnings else 0)
+
+
+if __name__ == "__main__":
+    sys.exit(main())
