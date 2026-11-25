@@ -27,13 +27,13 @@
 ## Android
 - Static: jadx for readable Java, apktool for resources and smali
 - Dynamic: objection over Frida for hooking and sslpinning disable, on your own test device only
-- Network: Burp or mitmproxy; Android 7 and above ignores user-installed CAs, so push the proxy CA to the system store on a rooted test device
+- Network: Burp or mitmproxy on a test device or emulator you own; try no-CA capture first (plain HTTP, app-level logs). Android 7 and above ignores user-installed CAs, so only on an emulator or test device you own may you push the proxy CA to the system store; never on a daily-use device
 - Automated triage: MobSF
 
 ## iOS
 - Static: Hopper on the IPA, frida-ios-dump on your own jailbroken test device
 - Dynamic: Frida gadget injection, objection
-- Network: remote virtual interface plus a proxy CA trusted in certificate trust settings
+- Network: remote virtual interface on a simulator or test device you own; try no-CA capture first (plain HTTP, app-level logs). Only on a simulator or test device you own may you trust a proxy CA in certificate trust settings; never on a daily-use device
 
 ## Cross-platform constant
 - Frida hooks functions on Linux, Windows, macOS, Android, and iOS; it is the highest-leverage single tool in this workflow
