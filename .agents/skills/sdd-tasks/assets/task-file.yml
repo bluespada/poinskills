@@ -1,0 +1,25 @@
+# specs/tasks/T{{NN}}-{{group-slug}}.yml
+#
+# YAML sequence, one mapping per task. Key order is fixed.
+# Task names are unique across every file under specs/tasks/ — dependsOn
+# resolves against them. Timestamps are ISO-8601 UTC.
+#
+# dependsOn has exactly two forms:
+#   - a task name          "Login endpoint"
+#   - a path to a tasks file, meaning every task in that file
+#                          "specs/tasks/T01-foundation.yml"
+
+- name: {{Task name, also the graph node identifier}}
+  description: {{One-line summary.}}
+  content: |
+    Satisfies: {{FR-001}}
+
+    {{The work specification.}}
+  status: {{draft | pending | complete | canceled}}
+  dependsOn: []
+  goals:
+    - {{Condition whose truth means this task is finished.}}
+  authored:
+    - {{author}}
+  createdAt: {{YYYY-MM-DDTHH:MM:SSZ}}
+  updatedAt: {{YYYY-MM-DDTHH:MM:SSZ}}

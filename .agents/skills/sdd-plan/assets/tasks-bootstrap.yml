@@ -1,0 +1,45 @@
+# specs/tasks/T01-foundation.yml
+#
+# One file per phase or wave. This file is a YAML sequence: one mapping per task.
+# Key order is fixed. Timestamps are ISO-8601 UTC. Task names must be unique
+# across every file under specs/tasks/, because dependsOn resolves against them.
+
+- name: {{Task name — also the graph node identifier}}
+  description: {{One-line summary of the task.}}
+  content: |
+    Satisfies: {{FR-001, FR-003}}
+
+    {{The work specification: what to build, where it lives, what it must not
+    touch, and the constraints that apply. Written so another agent can execute
+    it without re-reading the PRD.}}
+  status: draft
+  dependsOn: []
+  goals:
+    - {{Condition whose truth means this task is finished, checkable by a command, a test, or an observable behavior.}}
+    - {{Second condition, if the task genuinely needs one.}}
+  authored:
+    - {{author}}
+  createdAt: {{YYYY-MM-DDTHH:MM:SSZ}}
+  updatedAt: {{YYYY-MM-DDTHH:MM:SSZ}}
+
+- name: {{Second task name}}
+  description: {{One-line summary of the task.}}
+  content: |
+    Satisfies: {{FR-004}}
+
+    {{The work specification for the second task in this group.}}
+  status: draft
+  dependsOn:
+    - {{First task name}}
+  goals:
+    - {{Condition whose truth means this task is finished.}}
+  authored:
+    - {{author}}
+  createdAt: {{YYYY-MM-DDTHH:MM:SSZ}}
+  updatedAt: {{YYYY-MM-DDTHH:MM:SSZ}}
+
+# dependsOn accepts task names, or a path to a task file meaning "every task in
+# that file" — the latter is how whole phases are ordered:
+#
+#   dependsOn:
+#     - specs/tasks/T01-foundation.yml
