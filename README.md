@@ -20,6 +20,7 @@ Personal collection of agent skills. Each skill lives under `.agents/skills/<nam
 - `skills-creator` - author or audit an Agent Skill against the house rules.
 - `spec-conventions` - document what belongs in `specs/` and which numbers and statuses to use.
 - `teach-me` - teach a concept in small honest steps with an optional quiz.
+- `unit-test-discipline` - write unit tests with a red-to-green gate and fixed coverage obligations.
 - `unslop` - remove AI writing tells and give prose a human voice.
 
 ## Install
