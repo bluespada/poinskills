@@ -20,8 +20,7 @@ description: >-
 - Read `references/tasks-rules.md` for the schema, the status lifecycle, and the DAG rules.
 - Copy `assets/task-file.yml` when creating a file; it is a YAML sequence with one mapping per task.
 - Keep the key order used in that template, and keep every key present even when a list is empty.
-- Preserve `content` and `goals` unless the user asks for a change or a live request drifts from them;
-  they carry the requirements this skill did not author.
+- Preserve `content` and `goals` unless the user asks for a change or a live request drifts from them; they carry the requirements this skill did not author.
 - Move `updatedAt` on every write, leave `createdAt` alone, and append to `authored` rather than replacing it.
 
 ## Edit the graph

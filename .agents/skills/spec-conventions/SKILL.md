@@ -34,8 +34,7 @@ description: >-
 - Record only what is decided. An unsettled convention is listed as open, never guessed at.
 - Keep the glossary free of general programming terms; a general glossary belongs elsewhere.
 - Cite the source of a convention when it came from a decision record or an ADR.
-- On user drift, update the artifact and the convention together in the same work; otherwise report the
-  mismatch instead of quietly editing.
+- On user drift, update the artifact and the convention together in the same work; otherwise report the mismatch instead of quietly editing.
 - Never invent a convention that no existing artifact follows without asking first.
 
 ## Finish

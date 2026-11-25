@@ -23,10 +23,7 @@ description: >-
 - Lead with the decision in one line, then the reasoning, then what the decision rules out.
 - Record the alternatives that were rejected and why; that is what a later reader comes looking for.
 - Link the artifacts the decision affects, and state plainly that this record is not an ADR.
-- Append. Never rewrite an earlier entry to match a later decision, except when a live user request
-  changes direction: then pause, name the affected entry and artifacts, and wait for explicit user
-  confirmation before updating them in the same work. Without that confirmation, record the new
-  direction as a separate draft entry and stop.
+- Append. Never rewrite an earlier entry to match a later decision, except when a live user request changes direction: then pause, name the affected entry and artifacts, and wait for explicit user confirmation before updating them in the same work. Without that confirmation, record the new direction as a separate draft entry and stop.
 
 ## Status
 - `draft` while the reasoning is still being gathered, `pending` once written and awaiting a decision, `complete` once settled, `canceled` if the decision was dropped.

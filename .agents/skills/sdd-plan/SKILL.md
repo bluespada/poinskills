@@ -21,8 +21,7 @@ description: >-
 - Read `references/rubber-duck-rules.md` for the review protocol, then `references/adr-rules.md` when the review reaches a decision that is hard to reverse.
 - Attack the requirements before adding anything: contradictions, unstated assumptions, untestable criteria, missing failure and edge cases, missing non-functional requirements, and scope no requirement justifies.
 - Report each finding with the requirement id it attacks, and ask the user to resolve it.
-- Once the user gives direction, apply it: revise the PRD in the same work rather than reporting again.
-  Never rewrite the PRD unasked to make it pass.
+- Once the user gives direction, apply it: revise the PRD in the same work rather than reporting again. Never rewrite the PRD unasked to make it pass.
 
 ## Bootstrap the tasks
 - Read `references/bootstrap-rules.md` for grouping, naming, and DAG rules, then copy `assets/tasks-bootstrap.yml` as the file skeleton.
