@@ -9,6 +9,7 @@ Personal collection of agent skills. Each skill lives under `.agents/skills/<nam
 - `agents-creator` - create, rewrite, or audit an `AGENTS.md` with the house structure every project shares.
 - `clean-room-reimplementation` - reimplement a product's observable behavior from scratch with lawful acquisition and clean-room records.
 - `codereview` - review code and pull requests with small diffs, fast first response, and evidence-grounded checks.
+- `codesweep` - sweep a codebase for bugs across files with no diff, map each issue as structure or local.
 - `decision-log` - record why a decision was made in `specs/decisions/`.
 - `design-doc` - write design docs and tokens in the `DESIGN.md` format.
 - `frontend-taste` - recommend 2-3 named visual directions before building any UI.
